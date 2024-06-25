@@ -4,6 +4,10 @@ title: "Mensuration Canon w/ Sawtooth Wave Synths"
 date: 2024-06-25
 ---
 
+Download Sonic Pi at https://sonic-pi.net/.
+
+Message ChatGPT with the following one at a time:
+
 * Can you create a melody that is 8 seconds long and is centered around G4?
 
 * Can you show that in code for Sonic Pi?
