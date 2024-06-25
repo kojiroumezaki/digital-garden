@@ -7,6 +7,6 @@ layout: home
 
 <div class="home-intro">
   <h1>Welcome to My Blog</h1>
-  <img src="{{ '/assets/images/home-image.jpg' | relative_url }}" alt="Home Image">
+  <img src="{{ '/assets/images/a distance intertwined cover.jpg' | relative_url }}" alt="Home Image">
   <p>Check out my latest posts below.</p>
 </div>
