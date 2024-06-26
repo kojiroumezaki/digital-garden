@@ -26,6 +26,8 @@ baseurl: "/digital-garden" # the subpath of your site, e.g. /blog
 url: "https://kojiroumezaki.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: kojiroumezaki
 github_username:  kojiroumezaki
+exclude:
+  - _posts/2024-06-24-welcome-to-jekyll.md
 
 # Build settings
 theme: minima
