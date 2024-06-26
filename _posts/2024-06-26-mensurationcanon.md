@@ -23,6 +23,6 @@ date: 2024-06-26
 Original 8-second phrases can be anything (e.g., MIDI notes), but continuous pitch tracking data on a solo instrument (e.g. shakuhachi) with roughly 10-20 data points per second is a possible suggestion.
 
 
-An example in Sonic Pi (Ruby) is [here]({% post_url 2024-06-26-mensurationcanon_example_sonicpi %})
+An example in Sonic Pi (Ruby) is [here]({% post_url 2024-06-26-mensurationcanon_example_sonicpi %}).
 
 In memory of Larry Polansky. June, 2024.
