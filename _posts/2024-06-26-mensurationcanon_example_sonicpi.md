@@ -4,6 +4,8 @@ title: "Mensuration Canon on an 8-second Phrase: Sonic Pi Example"
 date: 2024-06-26
 ---
 
+```ruby
+
 # NOTE: Turn off Safe Audio Mode in the Audio menu if MIDI note numbers below 0 are being played
 
 # Define the original phrases as MIDI note numbers
@@ -75,3 +77,5 @@ original_phrases.each_with_index do |original_phrase, synth_block_index|
   end
   sleep 20 if synth_block_index < original_phrases.length - 1
 end
+
+```
