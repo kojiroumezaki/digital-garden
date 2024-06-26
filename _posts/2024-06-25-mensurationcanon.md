@@ -1,31 +1,25 @@
 ---
 layout: post
-title: "Mensuration Canon w/ Sawtooth Wave Synths"
+title: "Mensuration Canon on an 8-second Phrase"
 date: 2024-06-25
 ---
 
-In memory of Larry Polansky.
+1. Create an 8-second phrase. Center it around G4. The phrase should roughly be in the G3-D5 range. Call it the original phrase.
+2. Transpose the original phrase down by 5 octaves. Scale the duration of the phrase to 60/1 seconds (60 seconds). Play this phrase 1 time so that it is 60 seconds in duration. Call this a part.
+3. Transpose the original phrase down by 4 octaves. Scale the duration of the phrase to 60/2 seconds (30 seconds). Play this phrase 2 times so that it is 60 seconds in duration. Call this another part.
+4. Transpose the original phrase down by 3 octaves. Scale the duration of the phrase to 60/3 seconds (20 seconds). Play this phrase 3 times so that it is 60 seconds in duration. Call this another part.
+5. ...and so on until you have a total of 10 parts, where the lowest part is 5 octaves below the original phrase and the highest part is 4 octaves above the original phrase.
+6. To each part add a fade in and fade out.
+7. The part in the lowest octave will start fading in at 0 seconds, reach full amplitude at 30 seconds, and end fading out at 60 seconds.
+8. The part in the next octave above will start fading in at 1.2 seconds, reach full amplitude at 30 seconds, and end fading out at 28.8 seconds.
+9. The part in the next octave above will start fading in at 2.4 seconds, reach full amplitude at 30 seconds, and end fading out at 27.6 seconds.
+10. ...and so on until you have fade times for all 10 parts. The highest octave part will start fading in at 9 * 1.2 seconds, reach full amplitude at 30 seconds, and end at 60 seconds - 9 * 1.2 seconds.
+11. Play all 10 parts concurrently. Call this a synth block.
+12. For timbre, synthesize all parts with a sawtooth wave oscillator without any amplitude envelope. Each part will have its own dedicated oscillator.
+13. Add a low pass filter to each oscillator. For all oscillators, a suggested cutoff frequency is 4kHz with a Q-factor of 0.25.
+14. Create a total of 3 synth blocks. They should not necessarily be based on the same original phrase.
+15. Play the synth blocks in sequence (one after another) at 20 second intervals. Looping the 3 synth blocks is a suggestion. Before each synth block plays again, change its original 8 second phrase.
 
-Download Sonic Pi at [Link https://sonic-pi.net/]("https://sonic-pi.net/").
+Original 8-second phrases can be anything (e.g., MIDI notes), but continuous pitch tracking data on a solo instrument (e.g. shakuhachi) with roughly 10-20 data points per second is a possible suggestion.
 
-Message ChatGPT with the following one at a time:
-
-* Can you create a melody that is 8 seconds long and is centered around G4?
-
-* Can you play that melody in code for Sonic Pi?
-
-* Can you sustain each note over its entire duration with an attack time of 0 and a release time of 0?
-
-* Can you set the synth to a sawtooth wave?
-
-* Can you transpose the melody down by 5 octaves?
-
-* Can you stretch the transposed melody to 30 seconds with no repeats?
-
-* Can you copy the melody in the lowest octave, transpose it up by 1 octave, and play it 2 times over the existing melody so that they both start and end at the same time?
-
-* Can you copy the melody in the lowest octave again, transpose it up by 2 octaves, and play it 3 times simultaneously over the same 30 second duration? There should now be 3 melodies playing simultaneously.
-
-* Can you repeat the previous request, but the transposition should be 3 octaves, it should play 4 times simultaneously over the same 30 second duration, and there should now be 4 melodies playing simultaneously.
-
-* Can you repeat the previous request another 6 times, each time increasing the transposition up by 1 octave and increasing the number of times played by 1?
+In memory of Larry Polansky. June, 2024.
