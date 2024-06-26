@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Mensuration Canon on an 8-second Phrase"
+title: "Mensuration Canon on a Phrase"
 date: 2024-06-26
 ---
 
