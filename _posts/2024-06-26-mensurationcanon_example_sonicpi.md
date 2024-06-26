@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Mensuration Canon on an 8-second Phrase: Sonic Pi Example"
+title: "Mensuration Canon on a Phrase: Sonic Pi Example"
 date: 2024-06-26
 ---
 
