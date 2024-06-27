@@ -8,3 +8,4 @@ layout: home
 <div class="home-intro">
   <img src="{{ '/assets/images/a distance intertwined cover.jpg' | relative_url }}" alt="Home Image">
 </div>
+<hr/>
