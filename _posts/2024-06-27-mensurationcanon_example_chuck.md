@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Mensuration Canon on a Phrase: Sonic Pi Example"
-date: 2024-06-26
+title: "Mensuration Canon on a Phrase: chucK Example"
+date: 2024-06-27
 ---
 
 ```chucK
