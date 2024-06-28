@@ -68,7 +68,6 @@ fun void play_part(int part_index, float original_phrase[], float duration, int 
     // Calculate the octave shifted phrase
     calculate_octave_shifted_phrase(original_phrase, octave_shift, duration, scaled_phrase, duration_event);
 
-    // Create a sawtooth oscillator
     SawOsc saw;
     LPF lpf;
     saw => lpf => dac;
@@ -91,6 +90,10 @@ fun void play_part(int part_index, float original_phrase[], float duration, int 
     }
 }
 
+// pull samples from the dac
+dac => WvOut w => blackhole;
+"mensuration_canon.wav" => w.wavFilename;
+
 // Play each synth block in sequence with 20-second intervals
 original_phrases.size() => int num_synth_blocks;
 for (0 => int i_block; i_block < num_synth_blocks; i_block++) {
@@ -105,5 +108,8 @@ for (0 => int i_block; i_block < num_synth_blocks; i_block++) {
     else
         20::second => now;
 }
+
+// temporary workaround to automatically close file on remove-shred
+null @=> w;
 
 ```
