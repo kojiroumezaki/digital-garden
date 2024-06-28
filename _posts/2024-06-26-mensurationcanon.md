@@ -25,4 +25,10 @@ Original 8-second phrases can be anything (e.g., MIDI notes), but continuous pit
 An example in Sonic Pi (Ruby) is [here](/digital-garden{% post_url 2024-06-26-mensurationcanon_example_sonicpi %}).
 An example in chucK is [here](/digital-garden{% post_url 2024-06-27-mensurationcanon_example_chuck %}).
 
+Listen to the chucK example (a simple 44.1kHz mono version):
+<audio controls>
+  <source src="/assets/audio/mensurationcanon_mono.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
 In memory of Larry Polansky. June, 2024.
