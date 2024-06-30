@@ -39,27 +39,34 @@ layout: home
 <div id="image-grid"></div>
 
 <script>
+links = []
+{% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+{% for post in sorted_posts %}
+	links.push("{{ post.url | relative_url }}");
+{% endfor %}
+</script>
+
+<script>
 	document.addEventListener('DOMContentLoaded', () => {
-		const images = [
-						'./assets/images/hydrangea.jpg',
-						'./assets/images/hydrangea.jpg',
-						'./assets/images/hydrangea.jpg',
-						'./assets/images/hydrangea.jpg'
-					];
+		images = [];
+		links.forEach(link => {
+			images.push({'src':'./assets/images/hydrangea.jpg', 'link':link});
+		});
 		const imageGrid = document.getElementById('image-grid');
 
-		const imageContainer = document.createElement('div');
-		imageContainer.classList.add('image-container');
-
-		images.forEach(src => {
+		images.forEach(image => {
 			const imageContainer = document.createElement('div');
 			imageContainer.classList.add('image-container');
-			
+
+			const anchor = document.createElement('a');
+			anchor.href = image.link;
+
 			const img = document.createElement('img');
-			img.src = src;
+			img.src = image.src;
 			img.alt = 'Grid Image';
-			
-			imageContainer.appendChild(img);
+
+			anchor.appendChild(img);
+			imageContainer.appendChild(anchor);
 			imageGrid.appendChild(imageContainer);
 		});
 	});
