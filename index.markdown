@@ -5,15 +5,13 @@
 layout: home
 ---
 
-<img src="{{ '/assets/images/a distance intertwined cover.jpg' | relative_url }}" alt="a distance, intertwined cover art">
-
 <style>
 	#image-grid {
 		display: grid;
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: repeat(3, 1fr);
 		gap: 10px;
-		width: 400px;
-		height: 400px;
+		width: 600px;
+		height: 600px;
 	}
 
 	.image-container {
@@ -50,7 +48,10 @@ links = []
 	document.addEventListener('DOMContentLoaded', () => {
 		images = [];
 		links.forEach(link => {
-			images.push({'src':'./assets/images/hydrangea.jpg', 'link':link});
+			image_path = './assets/images/hydrangea.jpg';
+			if (link.includes('adistanceintertwined_cd_release.html'))
+				image_path = './assets/images/a distance intertwined cover.jpg';
+			images.push({'src':image_path, 'link':link});
 		});
 		const imageGrid = document.getElementById('image-grid');
 
