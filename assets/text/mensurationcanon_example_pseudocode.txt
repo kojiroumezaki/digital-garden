@@ -1,0 +1,77 @@
+def play():
+    dur_synth_block = 60.0
+    time_start = CURRENT_TIME()
+
+    phrases = getPhrases()  # Get the phrases from the function
+
+    for phrase in phrases:
+        playSynthBlock(phrase, dur_synth_block, time_start)
+        time_start += dur_synth_block / 3
+
+def getPhrases():
+    # for example:
+    return [
+#        [replace with comma-separated list of MIDI note values],
+#        [replace with comma-separated list of MIDI note values],
+#        [replace with comma-separated list of MIDI note values],
+#        etc.
+    ]
+
+def playSynthBlock(phrase, dur_synth_block, time_start):
+    num_parts = 10
+    octaves_8vb_max = -6  # octaves
+    dur_note_max = dur_synth_block / len(phrase)  # seconds
+    dur_interval_silent = dur_synth_block * 0.02  # 2% of dur_synth_block
+
+    # Create modules
+    synths, filters, gains = createSynthModules(num_parts)
+
+    # Schedule the notes and automation to be played in sequence
+    for i in range(num_parts):
+        scheduleNotes(i, dur_note_max / (i + 1), time_start, phrase, synths, octaves_8vb_max)
+        scheduleFades(i, time_start, gains, dur_interval_silent, dur_synth_block)
+
+def createSynthModules(num_parts):
+    synths = []
+    filters = []
+    gains = []
+    amp_synth = 1.0 / num_parts
+
+    for i in range(num_parts):
+        synth = CREATE_SYNTH(amp=amp_synth, waveform='sawtooth')
+        filter = CREATE_FILTER(type='lowpass', frequency=4000, Q=0.25)
+        gain = CREATE_GAIN(0)  # Initial gain value (0 for silence)
+
+        synths.append(synth)
+        filters.append(filter)
+        gains.append(gain)
+
+        CONNECT(synth, filter)
+        CONNECT(filter, gain)
+        CONNECT(gain, OUTPUT)
+
+    return synths, filters, gains
+
+def scheduleNotes(i_part, dur_note, time_start, phrase, synths, octaves_8vb_max):
+    note_shift = (octaves_8vb_max + i_part) * 12
+    num_iterations = i_part + 1
+
+    for i in range(num_iterations):
+        for note_num in phrase:
+            note_num_transposed = MIDI_TO_FREQ(note_num + note_shift)
+            PLAY_SYNTH(synths[i_part], note_num_transposed, dur_note, time_start)
+            time_start += dur_note
+
+def scheduleFades(i_part, time_start, gains, dur_interval_silent, dur_synth_block):
+    silent_time = i_part * dur_interval_silent
+    fade_time = dur_synth_block / 2 - silent_time
+
+    gain = gains[i_part]
+    t = time_start
+    SET_GAIN(gain, 0, t)  # Start at 0 gain
+    t += silent_time
+    LINEAR_RAMP(gain, 0, t)  # Silence
+    t += fade_time
+    LINEAR_RAMP(gain, 1, t)  # Fade in
+    t += fade_time
+    LINEAR_RAMP(gain, 0, t)  # Fade out
