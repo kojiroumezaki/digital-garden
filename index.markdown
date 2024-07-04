@@ -10,8 +10,10 @@ layout: home
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: 10px;
-		width: 600px;
-		height: 600px;
+		width: 80%;
+		height: 80%;
+		margin: 0 auto; /* Center the grid container */
+		place-items: center; /* Center items within the grid */
 	}
 
 	.image-container {
