@@ -20,7 +20,7 @@ layout: home
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
-		border: 1px solid #ccc;
+		border: 0px solid #ccc;
 		border-radius: 10px;
 	}
 
