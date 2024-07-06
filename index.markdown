@@ -39,30 +39,35 @@ layout: home
 <div id="image-grid"></div>
 
 <script>
-links = []
-{% assign sorted_posts = site.posts | sort: 'date' | reverse %}
-{% for post in sorted_posts %}
-	links.push("{{ post.url | relative_url }}");
-{% endfor %}
+  var posts = [];
+  {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+  {% for post in sorted_posts %}
+    posts.push({
+      url: "{{ post.url | relative_url }}",
+      title: "{{ post.title | escape }}"
+    });
+  {% endfor %}
 </script>
 
 <script>
 	document.addEventListener('DOMContentLoaded', () => {
 		images = [];
-		links.forEach(link => {
+		posts.forEach(post => {
 			image_path = './assets/images/hydrangea.jpg';
+			link = post.url;
 			if (link.includes('adistanceintertwined_cd_release.html'))
 				image_path = './assets/images/a distance intertwined cover.jpg';
-			images.push({'src':image_path, 'link':link});
+			images.push({'src':image_path, 'link':link, 'title':post.title});
 		});
-		const imageGrid = document.getElementById('image-grid');
 
+		const imageGrid = document.getElementById('image-grid');
 		images.forEach(image => {
 			const imageContainer = document.createElement('div');
 			imageContainer.classList.add('image-container');
 
 			const anchor = document.createElement('a');
 			anchor.href = image.link;
+			anchor.title = image.title;
 
 			const img = document.createElement('img');
 			img.src = image.src;
