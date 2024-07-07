@@ -6,12 +6,20 @@ layout: home
 ---
 
 <style>
-	#image-grid {
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 10px;
+		width: 100%;
+		place-items: center; /* Center items within the grid */
+	}
+
+	#image-grid-0, #image-grid-1 {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: 10px;
-		width: 80%;
-		height: 80%;
+		width: 90%;
+		height: 90%;
 		margin: 0 auto; /* Center the grid container */
 		place-items: center; /* Center items within the grid */
 	}
@@ -36,7 +44,10 @@ layout: home
 	}
 </style>
 
-<div id="image-grid"></div>
+<div class="grid">
+<div id="image-grid-0"></div>
+<div id="image-grid-1"></div>
+</div>
 
 <script>
   var posts = [];
@@ -60,7 +71,9 @@ layout: home
 			images.push({'src':image_path, 'link':link, 'title':post.title});
 		});
 
-		const imageGrid = document.getElementById('image-grid');
+		const imageGrid0 = document.getElementById('image-grid-0');
+		const imageGrid1 = document.getElementById('image-grid-1');
+
 		images.forEach(image => {
 			const imageContainer = document.createElement('div');
 			imageContainer.classList.add('image-container');
@@ -75,7 +88,11 @@ layout: home
 
 			anchor.appendChild(img);
 			imageContainer.appendChild(anchor);
-			imageGrid.appendChild(imageContainer);
+
+			if (image.link.includes('adistanceintertwined_cd_release.html'))
+				imageGrid0.appendChild(imageContainer);
+			else
+				imageGrid1.appendChild(imageContainer);
 		});
 	});
 </script>
