@@ -6,47 +6,39 @@ layout: home
 ---
 
 <style>
-	.grid {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: 10px;
-		width: 100%;
-		place-items: center; /* Center items within the grid */
-	}
-
-	#image-grid-0, #image-grid-1 {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 10px;
-		width: 90%;
-		height: 90%;
-		margin: 0 auto; /* Center the grid container */
-		place-items: center; /* Center items within the grid */
+	body {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 80vh;
+		margin: 0;
+		background-color: #f0f0f0;
+		font-family: Arial, sans-serif;
 	}
 
 	.image-container {
-		width: 100%;
-		height: 100%;
+		position: relative;
+		width: 800px; /* Adjust the width as needed */
+		height: 500px; /* Adjust the height as needed */
+		border: 1px solid #ccc;
 		overflow: hidden;
-		border: 0px solid #ccc;
-		border-radius: 10px;
+		background-color: white;
 	}
 
 	.image-container img {
-		width: 100%;
-		height: 100%;
+		position: absolute;
+		width: 100px; /* Adjust the size as needed */
+		height: auto;
 		object-fit: cover;
 		transition: transform 0.2s;
 	}
 
-	.image-container:hover img {
+	.image-container img:hover {
 		transform: scale(1.1);
 	}
 </style>
 
-<div class="grid">
-<div id="image-grid-0"></div>
-<div id="image-grid-1"></div>
+<div class="image-container" id="image-container">
 </div>
 
 <script>
@@ -71,13 +63,9 @@ layout: home
 			images.push({'src':image_path, 'link':link, 'title':post.title});
 		});
 
-		const imageGrid0 = document.getElementById('image-grid-0');
-		const imageGrid1 = document.getElementById('image-grid-1');
+		const imageContainer = document.getElementById('image-container');
 
 		images.forEach(image => {
-			const imageContainer = document.createElement('div');
-			imageContainer.classList.add('image-container');
-
 			const anchor = document.createElement('a');
 			anchor.href = image.link;
 			anchor.title = image.title;
@@ -86,13 +74,11 @@ layout: home
 			img.src = image.src;
 			img.alt = 'Grid Image';
 
+            img.style.top = 500 * Math.random() + 'px';
+            img.style.left = 300 * Math.random() + 'px';
+
 			anchor.appendChild(img);
 			imageContainer.appendChild(anchor);
-
-			if (image.link.includes('adistanceintertwined_cd_release.html'))
-				imageGrid0.appendChild(imageContainer);
-			else
-				imageGrid1.appendChild(imageContainer);
 		});
 	});
 </script>
