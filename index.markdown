@@ -10,16 +10,14 @@ layout: home
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		height: 80vh;
+		height: 100vh;
 		margin: 0;
 		background-color: #f0f0f0;
 		font-family: Arial, sans-serif;
 	}
-
+	
 	.image-container {
 		position: relative;
-		width: 800px; /* Adjust the width as needed */
-		height: 500px; /* Adjust the height as needed */
 		border: 1px solid #ccc;
 		overflow: hidden;
 		background-color: white;
@@ -27,7 +25,7 @@ layout: home
 
 	.image-container img {
 		position: absolute;
-		width: 100px; /* Adjust the size as needed */
+		width: 10%; /* Adjust the size as needed */
 		height: auto;
 		object-fit: cover;
 		transition: transform 0.2s;
@@ -64,6 +62,10 @@ layout: home
 		});
 
 		const imageContainer = document.getElementById('image-container');
+		
+		w = document.documentElement.clientWidth * 0.95;
+		imageContainer.style.width = w + 'px';
+		imageContainer.style.height = w/2 + 'px';
 
 		images.forEach(image => {
 			const anchor = document.createElement('a');
@@ -74,8 +76,8 @@ layout: home
 			img.src = image.src;
 			img.alt = 'Grid Image';
 
-            img.style.top = 500 * Math.random() + 'px';
-            img.style.left = 300 * Math.random() + 'px';
+            img.style.top = 80 * Math.random() + '%';
+            img.style.left = 90 * Math.random() + '%';
 
 			anchor.appendChild(img);
 			imageContainer.appendChild(anchor);
