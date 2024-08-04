@@ -54,7 +54,7 @@ layout: home
 	document.addEventListener('DOMContentLoaded', () => {
 		images = [];
 		posts.forEach(post => {
-			image_path = './assets/images/hydrangea.jpg';
+			image_path = './assets/images/hydrangea_alpha.png';
 			link = post.url;
 			if (link.includes('adistanceintertwined_cd_release.html'))
 				image_path = './assets/images/a distance intertwined cover.jpg';
