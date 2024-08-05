@@ -51,13 +51,19 @@ layout: home
 </script>
 
 <script>
+	image_path_default = './assets/images/hydrangea_alpha.png';
+	image_path_cat_1 = './assets/images/a distance intertwined cover.jpg';
+	link_cat_1 = 'adistanceintertwined_cd_release.html';
+</script>
+
+<script>
 	document.addEventListener('DOMContentLoaded', () => {
 		images = [];
 		posts.forEach(post => {
-			image_path = './assets/images/hydrangea_alpha.png';
+			image_path = image_path_default;
 			link = post.url;
-			if (link.includes('adistanceintertwined_cd_release.html'))
-				image_path = './assets/images/a distance intertwined cover.jpg';
+			if (link.includes(link_cat_1))
+				image_path = image_path_cat_1;
 			images.push({'src':image_path, 'link':link, 'title':post.title});
 		});
 
@@ -76,8 +82,12 @@ layout: home
 			img.src = image.src;
 			img.alt = 'Grid Image';
 
+			left_offset = 0;
+			if (image.src.includes(image_path_cat_1))
+				left_offset = 45;
+			
             img.style.top = 80 * Math.random() + '%';
-            img.style.left = 90 * Math.random() + '%';
+            img.style.left = 45 * Math.random() + left_offset + '%';
 
 			anchor.appendChild(img);
 			imageContainer.appendChild(anchor);
