@@ -72,6 +72,8 @@ layout: home
 		w = document.documentElement.clientWidth * 0.95;
 		imageContainer.style.width = w + 'px';
 		imageContainer.style.height = w/2 + 'px';
+		i_def = 0;
+		i_cat_1 = 0;
 
 		images.forEach(image => {
 			const anchor = document.createElement('a');
@@ -83,14 +85,32 @@ layout: home
 			img.alt = 'Grid Image';
 
 			left_offset = 0;
+			i = i_def;
 			if (image.src.includes(image_path_cat_1))
+			{
 				left_offset = 45;
+				i = i_cat_1++;
+			}
+			else
+				i_def++;
 			
-            img.style.top = 80 * Math.random() + '%';
-            img.style.left = 45 * Math.random() + left_offset + '%';
+			rand_top = Math.random();
+			rand_left = Math.random();
+			t = 0;
+			l = 0;
+			r = 0.225;
+			if (i > 0)
+			{
+				t = Math.sin(i) * r;
+				l = Math.cos(i) * r;
+			}
+            img.style.top = 80 * (t+0.5) + '%';
+            img.style.left = 45 * (l+0.5) + left_offset + '%';
 
 			anchor.appendChild(img);
 			imageContainer.appendChild(anchor);
+			
+			i++;
 		});
 	});
 </script>
