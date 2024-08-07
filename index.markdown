@@ -94,15 +94,17 @@ layout: home
 			else
 				i_def++;
 			
-			rand_top = Math.random();
-			rand_left = Math.random();
 			t = 0;
 			l = 0;
 			r = 0.225;
+			k = 0.025; // randomization factor
 			if (i > 0)
 			{
-				t = Math.sin(i) * r;
-				l = Math.cos(i) * r;
+				theta = (i * 60) / 360 * 2. * Math.PI;
+				t = Math.sin(theta) * r;
+				l = Math.cos(theta) * r;
+				t += (Math.random()-0.5)*2*k;
+				l += (Math.random()-0.5)*2*k;
 			}
             img.style.top = 80 * (t+0.5) + '%';
             img.style.left = 45 * (l+0.5) + left_offset + '%';
