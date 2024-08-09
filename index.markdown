@@ -41,7 +41,7 @@ layout: home
 
 <script>
   var posts = [];
-  {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+  {% assign sorted_posts = site.posts | sort: 'date' %}
   {% for post in sorted_posts %}
     posts.push({
       url: "{{ post.url | relative_url }}",
