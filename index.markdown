@@ -51,7 +51,7 @@ layout: home
 </script>
 
 <script>
-	image_path_default = './assets/images/hydrangea_alpha.png';
+	image_path_cat_0 = './assets/images/hydrangea_alpha.png';
 	image_path_cat_1 = './assets/images/a distance intertwined cover.jpg';
 	link_cat_1 = 'adistanceintertwined_cd_release.html';
 </script>
@@ -60,7 +60,7 @@ layout: home
 	document.addEventListener('DOMContentLoaded', () => {
 		images = [];
 		posts.forEach(post => {
-			image_path = image_path_default;
+			image_path = image_path_cat_0;
 			link = post.url;
 			if (link.includes(link_cat_1))
 				image_path = image_path_cat_1;
@@ -72,8 +72,9 @@ layout: home
 		w = document.documentElement.clientWidth * 0.95;
 		imageContainer.style.width = w + 'px';
 		imageContainer.style.height = w/2 + 'px';
-		i_def = 0;
-		i_cat_1 = 0;
+		i_cat = [];
+		i_cat[0] = 0;
+		i_cat[1] = 0;
 
 		images.forEach(image => {
 			const anchor = document.createElement('a');
@@ -85,14 +86,14 @@ layout: home
 			img.alt = 'Grid Image';
 
 			left_offset = 0;
-			i = i_def;
+			i = i_cat[0];
 			if (image.src.includes(image_path_cat_1))
 			{
 				left_offset = 45;
-				i = i_cat_1++;
+				i = i_cat[1]++;
 			}
 			else
-				i_def++;
+				i_cat[0]++;
 			
 			t = 0;
 			l = 0;
