@@ -2,6 +2,7 @@
 layout: post
 title: "Mensuration Canon on a Phrase: chucK Example"
 date: 2024-06-27
+image: "./assets/images/hydrangea_alpha.png"
 ---
 
 ```chucK

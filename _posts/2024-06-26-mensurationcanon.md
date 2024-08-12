@@ -2,6 +2,7 @@
 layout: post
 title: "Mensuration Canon on a Phrase"
 date: 2024-06-26
+image: "./assets/images/hydrangea_alpha.png"
 ---
 
 1. Create an 8-second phrase. Center it around G4. The phrase should roughly be in the G3-D5 range. Call it the original phrase.

@@ -45,7 +45,8 @@ layout: home
   {% for post in sorted_posts %}
     posts.push({
       url: "{{ post.url | relative_url }}",
-      title: "{{ post.title | escape }}"
+      title: "{{ post.title | escape }}",
+      image: "{{ post.image }}"
     });
   {% endfor %}
 </script>
@@ -54,19 +55,13 @@ layout: home
 	image_path_cat = [];
 	image_path_cat[0] = './assets/images/hydrangea_alpha.png';
 	image_path_cat[1] = './assets/images/a distance intertwined cover.jpg';
-	link_cat = [];
-	link_cat[1] = 'adistanceintertwined_cd_release.html';
 </script>
 
 <script>
 	document.addEventListener('DOMContentLoaded', () => {
 		images = [];
 		posts.forEach(post => {
-			image_path = image_path_cat[0];
-			link = post.url;
-			if (link.includes(link_cat[1]))
-				image_path = image_path_cat[1];
-			images.push({'src':image_path, 'link':link, 'title':post.title});
+			images.push({'src':post.image, 'link':post.url, 'title':post.title});
 		});
 
 		const imageContainer = document.getElementById('image-container');
