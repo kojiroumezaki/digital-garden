@@ -46,22 +46,25 @@ layout: home
     posts.push({
       url: "{{ post.url | relative_url }}",
       title: "{{ post.title | escape }}",
-      image: "{{ post.image }}"
+      image: "{{ post.image }}",
+      group: "{{ post.group }}"
     });
   {% endfor %}
 </script>
 
 <script>
-	image_path_cat = [];
-	image_path_cat[0] = './assets/images/hydrangea_alpha.png';
-	image_path_cat[1] = './assets/images/a distance intertwined cover.jpg';
+	posts.forEach(post => {
+		/* NEXT: count members for each group here */
+	});
+	/* NEXT: assign group with least members to group_right */
+	group_right = "adistanceintertwined";
 </script>
 
 <script>
 	document.addEventListener('DOMContentLoaded', () => {
 		images = [];
 		posts.forEach(post => {
-			images.push({'src':post.image, 'link':post.url, 'title':post.title});
+			images.push({'src':post.image, 'link':post.url, 'title':post.title, 'group':post.group});
 		});
 
 		const imageContainer = document.getElementById('image-container');
@@ -84,7 +87,7 @@ layout: home
 
 			left_offset = 0;
 			i = i_cat[0];
-			if (image.src.includes(image_path_cat[1]))
+			if (image.group == group_right)
 			{
 				left_offset = 45;
 				i = i_cat[1]++;
