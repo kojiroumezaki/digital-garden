@@ -3,6 +3,7 @@ layout: post
 title: "Mensuration Canon on a Phrase: Tone.js Example"
 date: 2024-06-28
 image: "./assets/images/hydrangea_alpha.png"
+group: "propcanon"
 ---
 
 <script src="https://unpkg.com/tone"></script>

@@ -53,11 +53,30 @@ layout: home
 </script>
 
 <script>
+	/* count members for each group */
+	group_count = {};
 	posts.forEach(post => {
-		/* NEXT: count members for each group here */
+		if (post.group != undefined)
+			if (group_count[post.group] == undefined)
+				group_count[post.group] = 1;
+			else
+				group_count[post.group]++;
 	});
-	/* NEXT: assign group with least members to group_right */
-	group_right = "adistanceintertwined";
+
+	/* get the key with the minimum count */
+	let minKey = null;
+	let minValue = Infinity;
+	for (const key in group_count) {
+	  /* console.log(key,group_count[key]); */
+	  if (group_count[key] < minValue) {
+	    minValue = group_count[key];
+	    minKey = key;
+	  }
+	}
+	/* console.log(`Minimum value is ${minValue} with key "${minKey}"`); */
+
+	/* assign key to group_right */
+	group_right = minKey;
 </script>
 
 <script>
@@ -72,6 +91,8 @@ layout: home
 		w = document.documentElement.clientWidth * 0.95;
 		imageContainer.style.width = w + 'px';
 		imageContainer.style.height = w/2 + 'px';
+		
+		/* NEXT: implement support for more than 2 categories (groups) */
 		i_cat = [];
 		i_cat[0] = 0;
 		i_cat[1] = 0;
@@ -95,9 +116,9 @@ layout: home
 			else
 				i_cat[0]++;
 			
-			t = 0;
-			l = 0;
-			r = 0.225;
+			t = 0; // relative top
+			l = 0; // relative left
+			r = 0.225; // radius
 			k = 0.025; // randomization factor
 			if (i > 0)
 			{

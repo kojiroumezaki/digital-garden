@@ -3,6 +3,7 @@ layout: post
 title: "Mensuration Canon on a Phrase: Sonic Pi Example"
 date: 2024-06-26
 image: "./assets/images/hydrangea_alpha.png"
+group: "propcanon"
 ---
 
 ```ruby
