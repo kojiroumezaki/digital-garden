@@ -52,34 +52,6 @@ layout: home
   {% endfor %}
 </script>
 
-<!--
-<script>
-	/* count members for each group */
-	group_count = {};
-	posts.forEach(post => {
-		if (post.group != undefined)
-			if (group_count[post.group] == undefined)
-				group_count[post.group] = 1;
-			else
-				group_count[post.group]++;
-	});
-
-	/* get the key with the minimum count */
-	let minKey = null;
-	let minValue = Infinity;
-	for (const key in group_count) {
-		if (group_count[key] < minValue) {
-			minValue = group_count[key];
-			minKey = key;
-		}
-	}
-	/* console.log(`Minimum value is ${minValue} with key "${minKey}"`); */
-	
-	/* assign key to group_right */
-	group_right = minKey;
-</script>
--->
-
 <script>
 	/* initialize count to 0 for each group */
 	group_count = {};
@@ -103,10 +75,6 @@ layout: home
 		imageContainer.style.width = w + 'px';
 		imageContainer.style.height = w/2 + 'px';
 		
-/*
-		i_group = [];
-		Object.keys(group_count).forEach(key=>{i_group.push(0)});
-*/
 		h = 80;
 		w = 90;
 		num_groups = Object.keys(group_count).length;
@@ -120,22 +88,6 @@ layout: home
 			img.src = image.src;
 			img.alt = 'Grid Image';
 
-/*
-			left_offset = 0;
-			i = i_group[0];
-			if (image.group == "")
-			{
-				left_offset = w/num_groups*1;
-				i = i_group[1]++;
-			}
-			if (image.group == group_right)
-			{
-				left_offset = w/num_groups*2;
-				i = i_group[2]++;
-			}
-			else
-				i_group[0]++;
-*/
 			/* count group members here and compute group's left_offset */
 			i = group_count[image.group]++;
 			keys = Object.keys(group_count);
