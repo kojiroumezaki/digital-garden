@@ -52,6 +52,7 @@ layout: home
   {% endfor %}
 </script>
 
+<!--
 <script>
 	/* count members for each group */
 	group_count = {};
@@ -67,16 +68,26 @@ layout: home
 	let minKey = null;
 	let minValue = Infinity;
 	for (const key in group_count) {
-	  /* console.log(key,group_count[key]); */
-	  if (group_count[key] < minValue) {
-	    minValue = group_count[key];
-	    minKey = key;
-	  }
+		if (group_count[key] < minValue) {
+			minValue = group_count[key];
+			minKey = key;
+		}
 	}
 	/* console.log(`Minimum value is ${minValue} with key "${minKey}"`); */
-
+	
 	/* assign key to group_right */
 	group_right = minKey;
+</script>
+-->
+
+<script>
+	/* initialize count to 0 for each group */
+	group_count = {};
+	posts.forEach(post => {
+		if (post.group != undefined)
+			if (group_count[post.group] == undefined)
+				group_count[post.group] = 0;
+	});
 </script>
 
 <script>
@@ -92,10 +103,13 @@ layout: home
 		imageContainer.style.width = w + 'px';
 		imageContainer.style.height = w/2 + 'px';
 		
-		/* NEXT: implement support for more than 2 categories (groups) */
-		i_cat = [];
-		i_cat[0] = 0;
-		i_cat[1] = 0;
+/*
+		i_group = [];
+		Object.keys(group_count).forEach(key=>{i_group.push(0)});
+*/
+		h = 80;
+		w = 90;
+		num_groups = Object.keys(group_count).length;
 
 		images.forEach(image => {
 			const anchor = document.createElement('a');
@@ -106,15 +120,27 @@ layout: home
 			img.src = image.src;
 			img.alt = 'Grid Image';
 
+/*
 			left_offset = 0;
-			i = i_cat[0];
+			i = i_group[0];
+			if (image.group == "")
+			{
+				left_offset = w/num_groups*1;
+				i = i_group[1]++;
+			}
 			if (image.group == group_right)
 			{
-				left_offset = 45;
-				i = i_cat[1]++;
+				left_offset = w/num_groups*2;
+				i = i_group[2]++;
 			}
 			else
-				i_cat[0]++;
+				i_group[0]++;
+*/
+			/* count group members here and compute group's left_offset */
+			i = group_count[image.group]++;
+			keys = Object.keys(group_count);
+			i_group = keys.indexOf(image.group);
+			left_offset = w/num_groups*i_group;
 			
 			t = 0; // relative top
 			l = 0; // relative left
@@ -128,8 +154,8 @@ layout: home
 				t += (Math.random()-0.5)*2*k;
 				l += (Math.random()-0.5)*2*k;
 			}
-            img.style.top = 80 * (t+0.5) + '%';
-            img.style.left = 45 * (l+0.5) + left_offset + '%';
+            img.style.top = h * (t+0.5) + '%';
+            img.style.left = w/num_groups*1 * (l+0.5) + left_offset + '%';
 
 			anchor.appendChild(img);
 			imageContainer.appendChild(anchor);
