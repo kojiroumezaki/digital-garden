@@ -6,4 +6,4 @@ image: "./assets/images/morningstar.png"
 group: "lamedeer"
 ---
 
-<p>A draft of the "Music and Hope" essage will be posted as a PDF here.</p>
+<p>A draft of the "Music and Hope" essay will be posted as a PDF here.</p>
