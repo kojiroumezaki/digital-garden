@@ -6,4 +6,7 @@ image: "./assets/images/morningstar.png"
 group: "lamedeer"
 ---
 
-<p>A draft of the "Music and Hope" essay will be posted as a PDF here.</p>
+<object data="{{ site.baseurl }}/assets/PDFs/Music and Hope_20200927a.pdf" type="application/pdf" width="100%" height="600px">
+<p>Your browser does not support embedded PDFs.</p>
+<a href="{{ site.baseurl }}/assets/PDFs/Music and Hope_20200927a.pdf">Download the PDF</a>
+</object>
