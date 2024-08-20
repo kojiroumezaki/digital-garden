@@ -40,6 +40,28 @@ layout: home
 </div>
 
 <script>
+	orientation = ""
+	function checkOrientation() {
+		const orientationType = screen.orientation.type;
+		if (orientationType.startsWith("landscape")) {
+			console.log("Landscape mode (more horizontal)");
+			// Perform actions for landscape orientation
+			orientation = "landscape"
+		} else if (orientationType.startsWith("portrait")) {
+			console.log("Portrait mode (more vertical)");
+			// Perform actions for portrait orientation
+			orientation = "portrait"
+		}
+	}
+	
+	// call the function initially
+	checkOrientation();
+	
+	// add an event listener for orientation changes
+	screen.orientation.addEventListener("change", checkOrientation);
+</script>
+
+<script>
   var posts = [];
   {% assign sorted_posts = site.posts | sort: 'date' %}
   {% for post in sorted_posts %}
@@ -73,7 +95,8 @@ layout: home
 		
 		w = document.documentElement.clientWidth * 0.95;
 		imageContainer.style.width = w + 'px';
-		imageContainer.style.height = w/2 + 'px';
+		h = orientation == "landscape" ? w/2 : w;
+		imageContainer.style.height = h + 'px';
 		
 		h = 80;
 		w = 90;
