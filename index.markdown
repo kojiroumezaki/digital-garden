@@ -111,12 +111,13 @@ layout: home
 			img.src = image.src;
 			img.alt = 'Grid Image';
 
-			/* count group members here and compute group's left_offset */
+			/* count group members here and compute group's offset */
 			i = group_count[image.group]++;
 			keys = Object.keys(group_count);
 			i_group = keys.indexOf(image.group);
-			left_offset = w/num_groups*i_group;
+			group_offset = w/num_groups*i_group;
 			
+			/* calculate the member's center and offset */
 			t = 0; // relative top
 			l = 0; // relative left
 			r = 0.225; // radius
@@ -129,8 +130,11 @@ layout: home
 				t += (Math.random()-0.5)*2*k;
 				l += (Math.random()-0.5)*2*k;
 			}
-            img.style.top = h * (t+0.5) + '%';
-            img.style.left = w/num_groups*1 * (l+0.5) + left_offset + '%';
+            center = h * (t+0.5) + '%';
+            offset = w / num_groups * (l+0.5) + group_offset + '%';
+
+            img.style.top = orientation == "landscape" ? center : offset;
+            img.style.left = orientation == "landscape" ? offset : center;
 
 			anchor.appendChild(img);
 			imageContainer.appendChild(anchor);
