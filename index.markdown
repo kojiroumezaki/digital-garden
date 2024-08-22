@@ -10,7 +10,7 @@ layout: home
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		height: 100vh;
+		/* height: 100vh; */
 		margin: 0;
 		background-color: #f0f0f0;
 		font-family: Arial, sans-serif;
@@ -21,6 +21,7 @@ layout: home
 		border: 1px solid #ccc;
 		overflow: hidden;
 		background-color: white;
+		margin-top: 10px;
 	}
 
 	.image-container img {
@@ -93,9 +94,14 @@ layout: home
 
 		const imageContainer = document.getElementById('image-container');
 		
-		w = document.documentElement.clientWidth * 0.95;
+		w_client = document.documentElement.clientWidth;
+		h_client = document.documentElement.clientHeight;
+		
+		w = w_client * 0.95;
 		imageContainer.style.width = w + 'px';
-		h = orientation == "landscape" ? w/2 : w;
+
+		/* h = orientation == "landscape" ? w/2 : w; */
+		h = h_client * 0.95;
 		imageContainer.style.height = h + 'px';
 		
 		h = 80;
