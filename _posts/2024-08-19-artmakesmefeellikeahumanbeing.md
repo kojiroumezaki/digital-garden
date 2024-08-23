@@ -13,8 +13,10 @@ group: "lamedeer"
 	
 	iframe {
 		/* 16:9 aspect ratio */
-		width: 80vh;
-		height: 45vh;
+		/* width: 80vh; */
+		/* height: 45vh; */
+		width: 480px;
+		height: 270px;
 	}
 </style>
 
