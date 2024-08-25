@@ -157,8 +157,8 @@ layout: home
 	// add an event listener for orientation changes
 	screen.orientation.addEventListener("change", () => {
 		let imageContainer = document.getElementById('image-container');
-		imageContainer.replaceChildren();
-		checkOrientation();
+		while (imageContainer.firstChild) imageContainer.removeChild(imageContainer.firstChild);
+    	checkOrientation();
 		loadDocument();
 	});
 </script>
