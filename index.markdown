@@ -90,11 +90,11 @@ layout: home
 
 <script>
 	function loadDocument() {
-		images = [];
+		let images = [];
 		posts.forEach(post => {
 			images.push({'src':post.image, 'link':post.url, 'title':post.title, 'group':post.group});
 		});
-		const imageContainer = document.getElementById('image-container');
+		let imageContainer = document.getElementById('image-container');
 		
 		w_client = document.documentElement.clientWidth;
 		h_client = document.documentElement.clientHeight;
@@ -156,8 +156,9 @@ layout: home
 
 	// add an event listener for orientation changes
 	screen.orientation.addEventListener("change", () => {
-		checkOrientation();
+		let imageContainer = document.getElementById('image-container');
 		imageContainer.replaceChildren();
+		checkOrientation();
 		loadDocument();
 	});
 </script>
