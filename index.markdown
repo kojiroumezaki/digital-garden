@@ -157,7 +157,6 @@ layout: home
 	// add an event listener for orientation changes
 	screen.orientation.addEventListener("change", () => {
 		checkOrientation();
-		getGroupCounts();
 		loadDocument();
 	});
 </script>
