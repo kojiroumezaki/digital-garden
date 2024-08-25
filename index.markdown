@@ -41,22 +41,6 @@ layout: home
 </div>
 
 <script>
-	var posts = [];
-	function getPosts() {
-		{% assign sorted_posts = site.posts | sort: 'date' %}
-		{% for post in sorted_posts %}
-		posts.push({
-			url: "{{ post.url | relative_url }}",
-			title: "{{ post.title | escape }}",
-			image: "{{ post.image }}",
-			group: "{{ post.group }}"
-		});
-		{% endfor %}
-	}
-	getPosts();
-</script>
-
-<script>
 	orientation = ""
 	function checkOrientation() {
 		const orientationType = screen.orientation.type;
@@ -73,6 +57,22 @@ layout: home
 	
 	// call the function initially
 	checkOrientation();
+</script>
+
+<script>
+	var posts = [];
+	function getPosts() {
+		{% assign sorted_posts = site.posts | sort: 'date' %}
+		{% for post in sorted_posts %}
+		posts.push({
+			url: "{{ post.url | relative_url }}",
+			title: "{{ post.title | escape }}",
+			image: "{{ post.image }}",
+			group: "{{ post.group }}"
+		});
+		{% endfor %}
+	}
+	getPosts();
 </script>
 
 <script>
@@ -157,6 +157,8 @@ layout: home
 	// add an event listener for orientation changes
 	screen.orientation.addEventListener("change", () => {
 		checkOrientation();
+		posts = [];
+		getPosts();
 		loadDocument();
 	});
 </script>
