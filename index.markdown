@@ -158,6 +158,7 @@ layout: home
 	screen.orientation.addEventListener("change", () => {
 		let imageContainer = document.getElementById('image-container');
 		while (imageContainer.firstChild) imageContainer.removeChild(imageContainer.firstChild);
+		getGroupCounts();
     	checkOrientation();
 		loadDocument();
 	});
