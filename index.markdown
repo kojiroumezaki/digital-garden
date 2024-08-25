@@ -54,8 +54,6 @@ layout: home
 			orientation = "portrait"
 		}
 	}
-	
-	// call the function initially
 	checkOrientation();
 </script>
 
@@ -158,8 +156,7 @@ layout: home
 	screen.orientation.addEventListener("change", () => {
 		let imageContainer = document.getElementById('image-container');
 		while (imageContainer.firstChild) imageContainer.removeChild(imageContainer.firstChild);
-		group_count = {};
-		getGroupCounts();
+		posts.forEach(post => { group_count[post.group] = 0; });
     	checkOrientation();
 		loadDocument();
 	});
