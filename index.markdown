@@ -157,8 +157,7 @@ layout: home
 	// add an event listener for orientation changes
 	screen.orientation.addEventListener("change", () => {
 		checkOrientation();
-		posts = [];
-		getPosts();
+		imageContainer.replaceChildren();
 		loadDocument();
 	});
 </script>
