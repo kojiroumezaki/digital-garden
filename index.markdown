@@ -41,7 +41,7 @@ layout: home
 </div>
 
 <script>
-	orientation = ""
+	var orientation = ""
 	function checkOrientation() {
 		const orientationType = screen.orientation.type;
 		if (orientationType.startsWith("landscape")) {
@@ -123,7 +123,7 @@ layout: home
 			i = group_count[image.group]++;
 			keys = Object.keys(group_count);
 			i_group = keys.indexOf(image.group);
-			group_offset = w/num_groups*i_group;
+			group_offset = w / num_groups * i_group;
 			
 			/* calculate the member's center and offset */
 			t = 0; // relative top
@@ -135,8 +135,8 @@ layout: home
 				theta = (i * 60) / 360 * 2. * Math.PI;
 				t = Math.sin(theta) * r;
 				l = Math.cos(theta) * r;
-				t += (Math.random()-0.5)*2*k;
-				l += (Math.random()-0.5)*2*k;
+				t += (Math.random() - 0.5) * 2 * k;
+				l += (Math.random() - 0.5) * 2 * k;
 			}
             center = h * (t+0.5) + '%';
             offset = w / num_groups * (l+0.5) + group_offset + '%';
@@ -158,6 +158,7 @@ layout: home
 	screen.orientation.addEventListener("change", () => {
 		let imageContainer = document.getElementById('image-container');
 		while (imageContainer.firstChild) imageContainer.removeChild(imageContainer.firstChild);
+		group_count = {};
 		getGroupCounts();
     	checkOrientation();
 		loadDocument();
