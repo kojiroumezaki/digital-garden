@@ -41,6 +41,22 @@ layout: home
 </div>
 
 <script>
+	var posts = [];
+	function getPosts() {
+		{% assign sorted_posts = site.posts | sort: 'date' %}
+		{% for post in sorted_posts %}
+		posts.push({
+			url: "{{ post.url | relative_url }}",
+			title: "{{ post.title | escape }}",
+			image: "{{ post.image }}",
+			group: "{{ post.group }}"
+		});
+		{% endfor %}
+	}
+	getPosts();
+</script>
+
+<script>
 	orientation = ""
 	function checkOrientation() {
 		const orientationType = screen.orientation.type;
@@ -57,41 +73,27 @@ layout: home
 	
 	// call the function initially
 	checkOrientation();
-	
-	// add an event listener for orientation changes
-	screen.orientation.addEventListener("change", checkOrientation);
-</script>
-
-<script>
-  var posts = [];
-  {% assign sorted_posts = site.posts | sort: 'date' %}
-  {% for post in sorted_posts %}
-    posts.push({
-      url: "{{ post.url | relative_url }}",
-      title: "{{ post.title | escape }}",
-      image: "{{ post.image }}",
-      group: "{{ post.group }}"
-    });
-  {% endfor %}
 </script>
 
 <script>
 	/* initialize count to 0 for each group */
-	group_count = {};
-	posts.forEach(post => {
-		if (post.group != undefined)
-			if (group_count[post.group] == undefined)
-				group_count[post.group] = 0;
-	});
+	var group_count = {};
+	function getGroupCounts() {
+		posts.forEach(post => {
+			if (post.group != undefined)
+				if (group_count[post.group] == undefined)
+					group_count[post.group] = 0;
+		});
+	}
+	getGroupCounts();
 </script>
 
 <script>
-	document.addEventListener('DOMContentLoaded', () => {
+	function loadDocument() {
 		images = [];
 		posts.forEach(post => {
 			images.push({'src':post.image, 'link':post.url, 'title':post.title, 'group':post.group});
 		});
-
 		const imageContainer = document.getElementById('image-container');
 		
 		w_client = document.documentElement.clientWidth;
@@ -147,5 +149,15 @@ layout: home
 			
 			i++;
 		});
+	}
+
+	// add an event listener for initial content load
+	document.addEventListener('DOMContentLoaded', loadDocument);
+
+	// add an event listener for orientation changes
+	screen.orientation.addEventListener("change", () => {
+		checkOrientation();
+		getGroupCounts();
+		loadDocument();
 	});
 </script>
