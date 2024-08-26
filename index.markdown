@@ -41,7 +41,7 @@ layout: home
 </div>
 
 <script>
-	var orientation = ""
+	var orientation = "";
 	function checkOrientation() {
 		const orientationType = screen.orientation.type;
 		if (orientationType.startsWith("landscape")) {
