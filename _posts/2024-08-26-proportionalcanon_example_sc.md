@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Mensuration Canon on a Phrase: SuperCollider Example"
+title: "Proportional Canon on a Phrase: SuperCollider Example"
 date: 2024-08-26
 image: "./assets/images/hydrangea_alpha.png"
 group: "propcanon"

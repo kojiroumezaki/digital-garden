@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Mensuration Canon on a Phrase"
+title: "Proportional Canon on a Phrase"
 date: 2024-06-26
 image: "./assets/images/hydrangea_alpha.png"
 group: "propcanon"
@@ -24,8 +24,9 @@ group: "propcanon"
 
 Original 8-second phrases can be anything (e.g., MIDI notes), but continuous pitch tracking data on a solo instrument (e.g. shakuhachi) with roughly 10-20 data points per second is a possible suggestion.
 
-An example in Sonic Pi (Ruby) is [here](/digital-garden{% post_url 2024-06-26-mensurationcanon_example_sonicpi %}).
-An example in chucK is [here](/digital-garden{% post_url 2024-06-27-mensurationcanon_example_chuck %}).
-An example in Tone.js is [here](/digital-garden{% post_url 2024-06-28-mensurationcanon_example_tonejs %}).
+An example in Sonic Pi (Ruby) is [here](/digital-garden{% post_url 2024-06-26-proportionalcanon_example_sonicpi %}).
+An example in chucK is [here](/digital-garden{% post_url 2024-06-27-proportionalcanon_example_chuck %}).
+An example in Tone.js is [here](/digital-garden{% post_url 2024-06-28-proportionalcanon_example_tonejs %}).
+An example in SuperCollider is [here](/digital-garden{% post_url 2024-06-28-proportionalcanon_example_sc %}).
 
 In memory of Larry Polansky. June, 2024.

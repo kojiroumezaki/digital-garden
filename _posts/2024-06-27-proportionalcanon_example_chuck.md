@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Mensuration Canon on a Phrase: chucK Example"
+title: "Proportional Canon on a Phrase: chucK Example"
 date: 2024-06-27
 image: "./assets/images/hydrangea_alpha.png"
 group: "propcanon"
@@ -94,7 +94,7 @@ fun void play_part(int part_index, float original_phrase[], float duration, int 
 
 // pull samples from the dac
 dac => WvOut w => blackhole;
-"mensuration_canon.wav" => w.wavFilename;
+"proportional_canon.wav" => w.wavFilename;
 
 // Play each synth block in sequence with 20-second intervals
 original_phrases.size() => int num_synth_blocks;

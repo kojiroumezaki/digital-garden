@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Mensuration Canon on a Phrase: Tone.js Example"
+title: "Proportional Canon on a Phrase: Tone.js Example"
 date: 2024-06-28
 image: "./assets/images/hydrangea_alpha.png"
 group: "propcanon"
@@ -13,12 +13,12 @@ group: "propcanon"
 
 <script>melodies = {{ data }}["melodies"]</script>
 
-<script src="{{ '/assets/js/mensurationcanon_example_tonejs.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/proportionalcanon_example_tonejs.js' | relative_url }}"></script>
 
 <button onclick="play()">Play</button>
 
 ```javascript
-{% include mensurationcanon_example_tonejs.js %}
+{% include proportionalcanon_example_tonejs.js %}
 ```
 
 The above JavaScript code should be included in HTML code, for example, as follows:
@@ -30,7 +30,7 @@ The above JavaScript code should be included in HTML code, for example, as follo
 
 <script>melodies = {{ data }}["melodies"]</script>
 {% endraw %}
-<script src="{{ '/assets/js/mensurationcanon_example_tonejs.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/proportionalcanon_example_tonejs.js' | relative_url }}"></script>
 
 <button onclick="play()">Play</button>
 ```
