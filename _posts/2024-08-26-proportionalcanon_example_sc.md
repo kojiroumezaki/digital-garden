@@ -6,8 +6,6 @@ image: "./assets/images/hydrangea_alpha.png"
 group: "propcanon"
 ---
 
-The following is still work-in-progress:
-
 ```SuperCollider
 // 1
 (
