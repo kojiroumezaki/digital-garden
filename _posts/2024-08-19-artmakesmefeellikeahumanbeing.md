@@ -11,7 +11,8 @@ group: "lamedeer"
 		text-align: left;
 		/* 16:9 aspect ratio */
 		width: 100%;
-		height: 56.25%;
+		aspect-ratio: 16/9;
+		/* height: 56.25%; */
 		background-color: black;
 	}
 </style>
