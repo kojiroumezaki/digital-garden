@@ -8,12 +8,18 @@ group: "lamedeer"
 
 <style>
 	.video_youtube {
-		text-align: left;
-		/* 16:9 aspect ratio */
+		text-align: center;
 		width: 100%;
 		aspect-ratio: 16/9;
-		/* height: 56.25%; */
 		background-color: black;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	iframe {
+		width: 100%;
+		height: 100%; 
 	}
 </style>
 
