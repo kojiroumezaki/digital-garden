@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "\"Art makes me feel like a human being\" Video"
+title: "Art makes me feel like a human being Video"
 date: 2024-08-19
 image: "./assets/images/morningstar.png"
 group: "lamedeer"
