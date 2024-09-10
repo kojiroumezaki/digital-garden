@@ -17,7 +17,7 @@ group: "lamedeer"
 		align-items: center;
 	}
 	
-	iframe {
+	.video_youtube iframe {
 		width: 100%;
 		height: 100%; 
 	}
