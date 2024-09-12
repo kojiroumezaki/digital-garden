@@ -6,8 +6,8 @@ image: "./assets/images/shakuhachi.png"
 group: "shakuhachiresearch"
 ---
 
+Shak_02.scad
 ```OpenSCAD
-
 include <Shak_Experiment_Header_00.scad>
 use <Bend_Experiment_00.scad>
 use <Shak_Experiment_00.scad>
@@ -277,4 +277,160 @@ shak_all();
 //shak_all_bend(num_segs);
 //shak_bottom_bend(num_segs);
 
+```
+
+Shak_Experiment_Header_00.scad
+```
+$fn=256; // make sure this is 256 for final print
+print_microns = 100;
+bend_tube_length = 90;
+bend_arc_angle = 30;
+```
+
+Bend_Experiment_00.scad
+```
+include <Shak_Experiment_Header_00.scad>
+
+function torus_radius() = bend_tube_length / (bend_arc_angle/180*PI);
+echo(torus_radius());
+
+radius_start = 9;
+radius_end = 7.25;
+radius_delta = radius_start - radius_end;
+
+function radius_max() = radius_start;
+echo(radius_max());
+
+module torus(radius)
+{
+    rotate_extrude()
+    translate([torus_radius(), 0, 0])
+    circle(r=radius);
+}
+
+module angle_cut(cut_angle,circle_radius)
+{
+    translate([0,0,-(torus_radius()+circle_radius)/2])
+        rotate([0,0,cut_angle])
+            cube(size=(torus_radius()+circle_radius), center=false);
+}
+
+module quadrant_cut(t,circle_radius)
+{
+    translate(t)
+        cube(size=torus_radius()+circle_radius, center=true);
+}
+
+module bend_bore_solid(num_segs)
+{
+    difference() {
+    
+        intersection() {
+            for (n = [1:num_segs])
+            {
+                radius_offset = (n-1)/(num_segs-1)*radius_delta;
+                cut_angle = -(num_segs-n)/num_segs*bend_arc_angle;
+                echo(n,cut_angle,radius_offset);
+                difference()
+                {
+                    torus(radius_max()-radius_offset);
+                    angle_cut(cut_angle,radius_max());
+                    if (cut_angle < -90)
+                        angle_cut(-90,radius_max());
+                }
+            }
+        }
+    
+        angle_cut(270-bend_arc_angle,radius_max());
+    
+        cube_t_length = (torus_radius()+radius_max())/2;
+        quadrant_cut([cube_t_length,cube_t_length,0],radius_max());
+        quadrant_cut([-cube_t_length,cube_t_length,0],radius_max());
+//        quadrant_cut([-cube_t_length,-cube_t_length,0],radius_max());
+    }
+}
+
+num_segs = 4;
+bend_bore_solid(num_segs);
+```
+
+Shak_Experiment_00.scad
+```
+include <Shak_Experiment_Header_00.scad>
+use <Bend_Experiment_00.scad>
+
+circle_radius = 16;
+
+function z_offset() = (torus_radius() + circle_radius) * sin(bend_arc_angle>90?90:bend_arc_angle);
+echo(z_offset());
+
+module bend(num_segs,bore_only)
+{
+    difference()
+    {
+        if (!bore_only)
+            torus(circle_radius);
+
+        bend_bore_solid(num_segs);
+    
+        angle_cut(270-bend_arc_angle,circle_radius);
+    
+        cube_t_length = (torus_radius()+circle_radius)/2;
+        quadrant_cut([cube_t_length,cube_t_length,0],circle_radius);
+        quadrant_cut([-cube_t_length,cube_t_length,0],circle_radius);
+        if (bend_arc_angle <= 90)
+            quadrant_cut([-cube_t_length,-cube_t_length,0],circle_radius);
+    }
+}
+
+translate([-torus_radius(),0,z_offset()]) rotate([90,0,0]) bend(3,false);
+```
+
+CurvedUtaguchi.scad
+```
+$fn=64;
+x = 2.5;
+y = 20;
+rad_circle = (x*x + y*y) / (2*x);
+tube_r = 16;
+xy_cube = (rad_circle*2+tube_r)*2;
+extra = 0.1;
+
+function uta_x() = x;
+function uta_y() = y;
+
+module uta_torus()
+{
+    rotate_extrude()
+        translate([rad_circle+tube_r, 0, 0])
+            circle(r=rad_circle);
+}
+
+module uta_cut_cube(z)
+{
+    translate([0,0,z])
+        cube([xy_cube,xy_cube,rad_circle], center=true);
+}
+
+module uta_cut()
+{
+    difference()
+    {
+        uta_torus();
+        uta_cut_cube(-rad_circle/2);
+    }
+}
+
+module uta_main()
+{
+    difference ()
+    {
+        translate([0,0,extra])
+            cylinder(h = y-extra, r = tube_r+x);
+        cylinder(h = y+extra, r = tube_r);
+        uta_cut();
+    }
+}
+
+uta_main();
 ```

@@ -141,7 +141,7 @@ layout: home
 
             img.style.top = orientation == "landscape" ? center : offset;
             img.style.left = orientation == "landscape" ? offset : center;
-            img.style.width = 8 + (Math.random() * 4) + '%'; // range is 8-12%
+            img.style.width = 9 + (Math.random() * 2) + '%'; // range is 9-11%
 
 			anchor.appendChild(img);
 			imageContainer.appendChild(anchor);
