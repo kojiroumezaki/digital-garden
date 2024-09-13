@@ -7,9 +7,24 @@ group: "shakuhachiresearch"
 ---
 
 <style>
-	body { margin: 0; }
-	canvas { width: 50%; display: block; }
+	body {
+		display: flex;
+	}
+
+	.canvas-container {
+		text-align: center;
+		width: 100%;
+		aspect-ratio: 16/9;
+		background-color: black;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 </style>
+    
+<div class="canvas-container" id="canvas-container">
+    <!-- Three.js canvas will be inserted here -->
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
@@ -22,8 +37,12 @@ group: "shakuhachiresearch"
     let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     let renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
+    renderer.domElement.style.width = 100 + '%';
+    renderer.domElement.style.height = 100 + '%';
 
+    let container = document.getElementById('canvas-container');
+    container.appendChild(renderer.domElement);
+    
     // Add a light
     let light = new THREE.DirectionalLight(0xffffff, 1);
     light.position.set(1, 1, 1).normalize();
@@ -52,7 +71,7 @@ group: "shakuhachiresearch"
         pivot.add(mesh);
         
         // Set camera position
-        camera.position.z = 500;
+        camera.position.z = 400;
     });
 
     // Animation loop
@@ -61,8 +80,8 @@ group: "shakuhachiresearch"
 
         // Rotate the pivot group instead of the mesh
         pivot.rotation.x += 0.000;
-        pivot.rotation.y += 0.005;
-        pivot.rotation.z += 0.010;
+        pivot.rotation.y += 0.0025;
+        pivot.rotation.z += 0.005;
         
         renderer.render(scene, camera);
     }
@@ -74,6 +93,8 @@ group: "shakuhachiresearch"
         let width = window.innerWidth;
         let height = window.innerHeight;
         renderer.setSize(width, height);
+		renderer.domElement.style.width = 50 + '%';
+		renderer.domElement.style.height = 50 + '%';
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
     });
