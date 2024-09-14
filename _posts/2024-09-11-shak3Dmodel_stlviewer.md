@@ -71,7 +71,7 @@ group: "shakuhachiresearch"
         pivot.add(mesh);
         
         // Set camera position
-        camera.position.z = 400;
+        camera.position.z = 500;
     });
 
     // Animation loop
@@ -93,8 +93,8 @@ group: "shakuhachiresearch"
         let width = window.innerWidth;
         let height = window.innerHeight;
         renderer.setSize(width, height);
-		renderer.domElement.style.width = 50 + '%';
-		renderer.domElement.style.height = 50 + '%';
+		renderer.domElement.style.width = 100 + '%';
+		renderer.domElement.style.height = 100 + '%';
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
     });
