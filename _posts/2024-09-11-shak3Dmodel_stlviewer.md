@@ -6,6 +6,12 @@ image: "./assets/images/shakuhachi.png"
 group: "shakuhachiresearch"
 ---
 
+{% for post in site.posts %}
+  {% if post.title == "尺八 3D Model Code: OpenSCAD" %}
+<a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+  {% endif %}
+{% endfor %}
+
 <style>
 	body {
 		display: flex;

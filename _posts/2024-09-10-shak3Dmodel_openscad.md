@@ -6,6 +6,12 @@ image: "./assets/images/shakuhachi.png"
 group: "shakuhachiresearch"
 ---
 
+{% for post in site.posts %}
+  {% if post.title == "尺八 3D Model Code: STL Viewer" %}
+<a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+  {% endif %}
+{% endfor %}
+
 Shak_02.scad
 ```OpenSCAD
 include <Shak_Experiment_Header_00.scad>
