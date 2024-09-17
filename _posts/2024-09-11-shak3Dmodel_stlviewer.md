@@ -42,7 +42,7 @@ group: "shakuhachiresearch"
 	let width = window.innerWidth;
 	let height = window.innerHeight;
     let scene = new THREE.Scene();
-    let camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+    let camera = new THREE.PerspectiveCamera(75, 16/9, 0.1, 1000);
     let renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(width, height);
     renderer.domElement.style.width = 100 + '%';
@@ -103,7 +103,7 @@ group: "shakuhachiresearch"
         renderer.setSize(width, height);
 		renderer.domElement.style.width = 100 + '%';
 		renderer.domElement.style.height = 100 + '%';
-        // camera.aspect = width / height;
-        // camera.updateProjectionMatrix();
+        camera.aspect = 16/9;
+        camera.updateProjectionMatrix();
     });
 </script>
