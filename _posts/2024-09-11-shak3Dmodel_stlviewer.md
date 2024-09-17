@@ -39,10 +39,12 @@ group: "shakuhachiresearch"
 	let filepath = "{{ site.baseurl }}/assets/STL/Shak_02_Full.stl";
 	
     // Basic Three.js setup
+	let width = window.innerWidth;
+	let height = window.innerHeight;
     let scene = new THREE.Scene();
-    let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    let camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
     let renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(width, height);
     renderer.domElement.style.width = 100 + '%';
     renderer.domElement.style.height = 100 + '%';
 
@@ -101,7 +103,7 @@ group: "shakuhachiresearch"
         renderer.setSize(width, height);
 		renderer.domElement.style.width = 100 + '%';
 		renderer.domElement.style.height = 100 + '%';
-        camera.aspect = width / height;
-        camera.updateProjectionMatrix();
+        // camera.aspect = width / height;
+        // camera.updateProjectionMatrix();
     });
 </script>
