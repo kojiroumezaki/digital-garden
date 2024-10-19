@@ -19,7 +19,7 @@ group: "propcanon"
 <button onclick="stop()">Stop</button>
 
 ```javascript
-{% include /assets/js/proportionalcanon_example_tonejs.js %}
+{% include proportionalcanon_example_tonejs.js %}
 ```
 
 The above JavaScript code should be included in HTML code, for example, as follows:
