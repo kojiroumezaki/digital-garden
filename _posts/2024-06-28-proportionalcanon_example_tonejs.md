@@ -16,9 +16,10 @@ group: "propcanon"
 <script src="{{ '/assets/js/proportionalcanon_example_tonejs.js' | relative_url }}"></script>
 
 <button onclick="play()">Play</button>
+<button onclick="stop()">Stop</button>
 
 ```javascript
-{% include proportionalcanon_example_tonejs.js %}
+{% include /assets/js/proportionalcanon_example_tonejs.js %}
 ```
 
 The above JavaScript code should be included in HTML code, for example, as follows:
@@ -33,4 +34,5 @@ The above JavaScript code should be included in HTML code, for example, as follo
 <script src="{{ '/assets/js/proportionalcanon_example_tonejs.js' | relative_url }}"></script>
 
 <button onclick="play()">Play</button>
+<button onclick="stop()">Stop</button>
 ```
