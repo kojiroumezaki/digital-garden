@@ -4,11 +4,11 @@ const dur_block = 60.0;
 
 const num_block_parts = 10;
 
-const max_8vb = -6; // octaves
+const num_8vb_max = -6; // octaves
 
-const synth_volume = -26; // dB (roughly 10% of full volume)
+const db_synth = -26; // roughly 10% of 0dB
 
-const silent_time_percent = 0.02;
+const percent_silent_interval = 0.02;
 
 const synths_array = new Array(num_blocks).fill(null);
 const filters_array = new Array(num_blocks).fill(null);
@@ -20,12 +20,12 @@ function init_arrays(block_index)
 	synths_array[block_index] = Array.from({ length: num_block_parts }, () => new Tone.Synth({
 		oscillator: { type: 'sawtooth' },
 		envelope: { attack: 0, decay: 0, sustain: 1, release: 0 }
-	}).set({ volume: synth_volume }));
+	}).set({ volume: db_synth }));
 
 	let melody = melodies[block_index];	
 
 	const noteNamesArray = Array.from({ length: num_block_parts },
-		(_, index) => melody.map(midi => Tone.Frequency(midi+((index+max_8vb)*12), "midi").toNote()));
+		(_, index) => melody.map(midi => Tone.Frequency(midi+((index+num_8vb_max)*12), "midi").toNote()));
 
 	const dur_note = dur_block / melody.length; // seconds
 	
@@ -64,7 +64,7 @@ function init_gains_events(block_index, start_time)
 		gain.gain.cancelScheduledValues(start_time);
 
 		// add new ramps
-		const silent_time_interval = dur_block * silent_time_percent // seconds
+		const silent_time_interval = dur_block * percent_silent_interval // seconds
 		const silent_time = index * silent_time_interval;
 		const fade_time = dur_block / 2 - silent_time;
 		let t = start_time + start_time_offset; // gain time events are based on Tone.now(), not transport
