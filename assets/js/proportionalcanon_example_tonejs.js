@@ -8,18 +8,11 @@ const max_8vb = -6; // octaves
 
 const synth_volume = -26; // dB (roughly 10% of full volume)
 
-let synths_array = null;
-let filters_array = null;
-let gains_array = null;
+const silent_time_percent = 0.02;
 
-function create_arrays(block_index)
-{
-	synths_array = new Array(num_blocks).fill(null);
-	
-	filters_array = new Array(num_blocks).fill(null);
-	
-	gains_array = new Array(num_blocks).fill(null);
-}
+const synths_array = new Array(num_blocks).fill(null);
+const filters_array = new Array(num_blocks).fill(null);
+const gains_array = new Array(num_blocks).fill(null);
 
 function init_arrays(block_index)
 {
@@ -71,7 +64,7 @@ function init_gains_events(block_index, start_time)
 		gain.gain.cancelScheduledValues(start_time);
 
 		// add new ramps
-		const silent_time_interval = dur_block * 0.02 // seconds; 2%
+		const silent_time_interval = dur_block * silent_time_percent // seconds
 		const silent_time = index * silent_time_interval;
 		const fade_time = dur_block / 2 - silent_time;
 		let t = start_time + start_time_offset; // gain time events are based on Tone.now(), not transport
@@ -101,5 +94,4 @@ function stop() {
 	Tone.Transport.stop();
 }
 
-create_arrays();
-synths_array.forEach((synths, block_index) => { init_arrays(block_index); });
+synths_array.forEach((_, block_index) => { init_arrays(block_index); });
