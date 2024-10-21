@@ -37,7 +37,7 @@ function toggle_playstop()
 
 <p style="text-align: center;">proportionalcanon_example_tonejs.js</p>
 ```javascript
-{% include proportionalcanon_example_tonejs.js %}
+{% include {{ '/assets/js/proportionalcanon_example_tonejs.js' | relative_url }} %}
 ```
 
 <p>The above JavaScript code (proportionalcanon_example_tonejs.js) should be included in HTML code, for example, as follows:</p>
